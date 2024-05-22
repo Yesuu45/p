@@ -17,7 +17,7 @@ public class Carro extends Vehiculo {
      * @param esAutomatico indica si el carro es automático.
      */
     public Carro(String nombrePropietario, String modelo, int tarifa, int numeroPuertas, boolean esAutomatico) {
-        super(nombrePropietario, modelo, tarifa);
+        super(nombrePropietario, modelo, modelo, tarifa);
         this.numeroPuertas = numeroPuertas;
         this.esAutomatico = esAutomatico;
     }

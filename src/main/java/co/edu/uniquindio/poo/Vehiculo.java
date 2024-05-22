@@ -6,38 +6,55 @@ import java.time.LocalTime;
  * Clase que representa un vehículo.
  */
 public class Vehiculo {
+    // Atributos
+    private String placa;
     private String nombre;
     private String modelo;
     private int tarifa;
     private LocalTime horaIngreso;
     private LocalTime horaSalida;
 
-    /**
-     * Constructor para inicializar un vehículo con nombre de propietario, modelo y tarifa.
-     * 
-     * @param nombre el nombre del propietario del vehículo.
-     * @param modelo el modelo del vehículo.
-     * @param tarifa la tarifa del vehículo.
-     */
-    public Vehiculo(String nombre, String modelo, int tarifa) {
-        assert nombre != null && !nombre.isBlank();
+    // Constructor
+    public Vehiculo(String placa, String nombre, String modelo, int tarifa) {
+        if (placa == null || placa.isBlank()) {
+            throw new IllegalArgumentException("La placa no puede ser nula o vacía.");
+        }
+        if (nombre == null || nombre.isBlank()) {
+            throw new IllegalArgumentException("El nombre no puede ser nulo o vacío.");
+        }
+        if (modelo == null || modelo.isBlank()) {
+            throw new IllegalArgumentException("El modelo no puede ser nulo o vacío.");
+        }
+        if (tarifa < 0) {
+            throw new IllegalArgumentException("La tarifa no puede ser negativa.");
+        }
+
+        this.placa = placa;
         this.nombre = nombre;
-        assert modelo != null && !modelo.isBlank();
         this.modelo = modelo;
-        assert tarifa >= 0;
         this.tarifa = tarifa;
-        this.horaIngreso = null;
-        this.horaSalida = null;
     }
 
     // Métodos getter y setter
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        if (placa == null || placa.isBlank()) {
+            throw new IllegalArgumentException("La placa no puede ser nula o vacía.");
+        }
+        this.placa = placa;
+    }
 
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
-        assert nombre != null && !nombre.isBlank();
+        if (nombre == null || nombre.isBlank()) {
+            throw new IllegalArgumentException("El nombre no puede ser nulo o vacío.");
+        }
         this.nombre = nombre;
     }
 
@@ -46,7 +63,9 @@ public class Vehiculo {
     }
 
     public void setModelo(String modelo) {
-        assert modelo != null && !modelo.isBlank();
+        if (modelo == null || modelo.isBlank()) {
+            throw new IllegalArgumentException("El modelo no puede ser nulo o vacío.");
+        }
         this.modelo = modelo;
     }
 
@@ -55,7 +74,9 @@ public class Vehiculo {
     }
 
     public void setTarifa(int tarifa) {
-        assert tarifa >= 0;
+        if (tarifa < 0) {
+            throw new IllegalArgumentException("La tarifa no puede ser negativa.");
+        }
         this.tarifa = tarifa;
     }
 
@@ -78,7 +99,8 @@ public class Vehiculo {
     @Override
     public String toString() {
         return "Vehiculo{" +
-                "nombre='" + nombre + '\'' +
+                "placa='" + placa + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", tarifa=" + tarifa +
                 ", horaIngreso=" + (horaIngreso != null ? horaIngreso : "N/A") +

@@ -15,7 +15,7 @@ public class Moto extends Vehiculo implements IMoto {
      * @param tipo el tipo de la moto.
      */
     public Moto(String nombre, String modelo, int tarifa, Tipo tipo) {
-        super(nombre, modelo, tarifa);
+        super(nombre, modelo, modelo, tarifa);
         this.tipo = tipo;
     }
 
